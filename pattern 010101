@@ -1,0 +1,20 @@
+class pattern_gen;
+  static rand bit[9:0] pattern;
+  constraint P{pattern==10'b0101010101;}
+  function void display();
+  endfunction
+endclass
+module rand_methods;
+  pattern_gen p1;
+  initial
+    begin
+      p1=new();
+      if(p1.randomize())begin
+        $display("generated pattern is %b",p1.pattern);
+      end
+        else begin
+          $display("generated pattern is failed");
+        end     
+    end
+endmodule
+
